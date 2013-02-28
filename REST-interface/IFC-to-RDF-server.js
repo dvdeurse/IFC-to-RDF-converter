@@ -35,7 +35,7 @@ function configureServer(base_path){
 	var re = RegExp('/' + PATH_PREFIX + '/(.+/)*(.*)');
 	app.get(re, function(req, res) {
 		var path = req.params[0]==null ? '' : unescape(req.params[0].replace(/\+/g, " "));
-		var item = unescape(req.params[1].replace(/\+/g, " "));
+		var item = unescape(req.params[1].replace(/\+/g, " ")).replace(/\s+/g, '');
 		var extension = null;
 		if(item.length > 4 && validExtension(item.substr(-4))){
 			extension = item.substr(-4);
@@ -113,7 +113,7 @@ function configureServer(base_path){
 	var re = RegExp('/' + PATH_PREFIX + '/(.+/)*(.*)');
 	app.put(re, function(req, res) {
 		var path = req.params[0]==null ? '' : unescape(req.params[0].replace(/\+/g, " "));
-		var item = unescape(req.params[1].replace(/\+/g, " "));
+		var item = unescape(req.params[1].replace(/\+/g, " ")).replace(/\s+/g, '');
 		var extension = null;
 		if(item.length > 4 && validExtension(item.substr(-4))){
 			extension = item.substr(-4);
@@ -166,7 +166,7 @@ function configureServer(base_path){
 	var re = RegExp('/' + PATH_PREFIX + '/(.+/)*(.*)');
 	app.delete(re, function(req, res) {
 		var path = req.params[0]==null ? '' : unescape(req.params[0].replace(/\+/g, " "));
-		var item = unescape(req.params[1].replace(/\+/g, " "));
+		var item = unescape(req.params[1].replace(/\+/g, " ")).replace(/\s+/g, '');
 		var extension = null;
 		if(item.length > 4 && validExtension(item.substr(-4))){
 			extension = item.substr(-4);
